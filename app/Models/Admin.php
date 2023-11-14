@@ -2,11 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class admin extends Model
+class Admin extends Model implements Authenticatable
 {
-    protected $table ="admin";
-    protected $fillable=['username','password'];
+    use Notifiable, AuthenticatableTrait;
+
+    // ... your model code ...
+
+    // For example, if your admins table has columns 'email' and 'password'
+    protected $fillable = [
+        'email', 'password',
+    ];
+
+    // ... other methods or properties ...
 }

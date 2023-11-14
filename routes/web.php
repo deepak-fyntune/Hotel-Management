@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User;
+use App\Http\Controllers\Admin;
 use App\Http\Controllers\AuthController;
 
 /*
@@ -29,13 +30,19 @@ Route::get('/admin', function () {
 Route::get('/admin-panel', function () {
     return view('admin/admin-panel');
 });
-
+Route::get('/user-panel', function () {
+    return view('admin/user-detail');
+});
+Route::get('/admin-add-user', function () {
+    return view('admin/admin-add-user');
+});
 Route::get('/controller', [User::class, 'showuser']);
-Route::post('/loginprocess', [User::class, 'store'])->name('loginprocess');
+Route::post('/user-register-process', [User::class, 'store'])->name('user-register-process');
+Route::post('/admin-add-user-process', [User::class, 'store_admin'])->name('admin-add-user-process');
+
 Route::post('/adminlogin', [User::class, 'store'])->name('adminlogin');
-Route::post('/admin-login', [AuthController::class, 'adminlogin'])->name('admin_login');
+Route::post('/admin-login', [AuthController::class, 'login'])->name('admin_login');
 
 
 
 
- 

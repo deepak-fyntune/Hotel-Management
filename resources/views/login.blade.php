@@ -81,7 +81,7 @@
     </form>
   </div>
   <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-    <form method="POST" action="{{ route('loginprocess') }}">
+    <form method="POST" action="{{ route('user-register-process') }}">
       
     @csrf
       <!-- Name input -->
