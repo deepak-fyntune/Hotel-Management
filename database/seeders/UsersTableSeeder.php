@@ -2,17 +2,14 @@
 
 namespace Database\Seeders;
 
-use App\Models\Users;
 use Illuminate\Database\Seeder;
-use Database\Factories\UserFakeFactory;
-
-
+use App\Models\Users;
 
 class UserFactory extends Seeder
 {
-
     public function run()
     {
+        // Use the UserFactory to create fake users
         \App\Models\Users::factory(10)->create();
     }
 }

@@ -21,11 +21,11 @@ class User extends Controller
         return redirect('/')->with('status', 'Registration Successfull');
     }
 
+
     public function store_admin(Request $request)
     {
         $post = new Users;
         $post->name = $request->nname;
-        $post->username = $request->uname;
         $post->email = $request->email;
         $post->password = $request->password;
 
@@ -34,5 +34,11 @@ class User extends Controller
 
         return redirect('admin-panel')->with('status', 'Registration Successful');
     }
+    public function destroy($id)
+    {
+        $user = Users::find($id);
+        $user->delete();
 
+        return redirect('detail-check')->with('status', 'User deleted successfully');
+    }
 }

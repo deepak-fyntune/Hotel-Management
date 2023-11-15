@@ -1,25 +1,15 @@
 <?php
 
-namespace Database\Factories;
-use Illuminate\Database\Eloquent\Factories\Factory;
+namespace Database\Seeders;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
- */
-class UserFakeFactory extends Factory
+use Illuminate\Database\Seeder;
+use App\Models\Users;
+
+class UserFakeFactory extends Seeder
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
+    public function run()
     {
-        return [
-            'name' => $this->faker->name(),   
-            'username' => $this->faker->word(), 
-            'email' => $this->faker->unique()->safeEmail(),  
-            'password' => bcrypt($this->faker->password()), 
-        ];
+        // Use the UserFactory to create fake users
+        \App\Models\Users::factory(10)->create();
     }
 }

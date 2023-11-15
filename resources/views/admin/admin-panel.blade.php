@@ -19,12 +19,12 @@
       <li class="active"><a href="#">Home</a></li>
       <li><a href="#">FOOD PANEL</a></li>
       <li><a href="#">ORDER</a></li>
-      <li><a href="/user-panel">USER PANEL</a></li>
-      
+      <li><a href="/detail-check">USER PANEL</a></li>
+
     </ul>
   </div>
 </nav>
-  
+
 <div class="container">
   <h3>HELLO!!! Admin</h3>
   <p>Wecome to food ordering portal</p>

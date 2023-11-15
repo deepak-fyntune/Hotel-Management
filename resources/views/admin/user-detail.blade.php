@@ -19,12 +19,12 @@
       <li ><a href="#">Home</a></li>
       <li><a href="#">FOOD PANEL</a></li>
       <li><a href="#">ORDER</a></li>
-      <li class="active"><a href="/user-panel">USER PANEL</a></li>
-      
+      <li class="active"><a href="/detail-check">USER PANEL</a></li>
+
     </ul>
   </div>
 </nav>
-  
+
 <div class="container">
     <a href="admin-add-user" class="btn btn-primary">Add User</a>
 <br>
@@ -32,25 +32,44 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
             <th scope="col">Handle</th>
           </tr>
         </thead>
         <tbody>
+            @foreach ($users as $user)
           <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td><input type="button" class="btn btn-danger" value="Delete">&nbsp;
+
+
+            <th scope="row">{{ $user->id }}</th>
+            <td>{{ $user->name }}</td>
+            <td>{{ $user->email }}</td>
+
+            <td>
+                <form action="{{ route('users-destroy', $user->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+                <form action="{{ route('users-update', $user->id) }}">
+                    @csrf
+                    @method('')
                 <input type="button" class="btn btn-success" value="Edit">
-            </td>
+
+            </form></td>
+
           </tr>
-          
+          @endforeach
+
         </tbody>
       </table>
-</div>
+
+      <div>
+        <!-- resources/views/home/index.blade.php -->
+
+
+
 
 </body>
 </html>

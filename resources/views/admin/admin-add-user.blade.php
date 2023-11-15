@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <title>ADD USER</title>
+
 </head>
 
 <body>
@@ -36,11 +37,7 @@
                                         <label class="form-label" for="form3Example3cg">Your Email</label>
                                     </div>
 
-                                    <div class="form-outline mb-3">
-                                        <input type="text" id="form3Example3cg" class="form-control form-control-lg"
-                                            name="uname" required />
-                                        <label class="form-label" for="form3Example3cg">Username</label>
-                                    </div>
+
 
 
                                     <div class="form-outline mb-3">
