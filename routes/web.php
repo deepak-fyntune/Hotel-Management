@@ -40,9 +40,22 @@ Route::get('/admin-add-user', function () {
 Route::get('/after-del', function () {
     return view('admin/admin-panel');
 });
+Route::get('/hello', function () {
+    return view('hello');
+});
+
+Route::get('/food-panel', function () {
+    return view('admin/food-panel');
+});
+
+Route::get('/user-update-process', function () {
+    return view('admin/food-panel');
+});
 
 
-
+Route::get('/add-food', function () {
+    return view('admin/add-food');
+});
 
 
 
@@ -55,10 +68,15 @@ Route::post('/adminlogin', [User::class, 'store'])->name('adminlogin');
 Route::post('/admin-login', [AuthController::class, 'login'])->name('admin_login');
 Route::delete('users-destroy/{id}', [User::class, 'destroy'])->name('users-destroy');
 Route::get('/detail-check', [HomeController::class, 'index'])->name('detail-check');
-Route::get('/user-update', [HomeController::class, 'view'])->name('user-update');
-Route::post('/update-user-process', [HomeController::class, 'view'])->name('update-user-process');
+Route::get('/user-update/{id}', [HomeController::class, 'view'])->name('user-update');
+// Route::post('/update-user-process/{id}', [HomeController::class, 'adminupdateuser'])->name('update-user-process');
+Route::post('/userauth', [AuthController::class,'userlogin'])->name('userauth');
+// Route::post('/user-update-process', [AuthController::class,''])->name('user-update-process');
 
 
 
-
+//Food Routing
+use App\Http\Controllers\FoodController;
+Route::get('/food-create', [FoodController::class, 'create'])->name('food.create');
+Route::post('/food-store', [FoodController::class, 'store'])->name('food.store');
 

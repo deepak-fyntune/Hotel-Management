@@ -21,12 +21,32 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
-            
+        // Use the 'users' guard and the 'User' model
+        if (Auth::guard('admin')->attempt($credentials)) {
             return redirect('/admin-panel');
         }
 
         // Authentication failed
         return back()->withErrors(['email' => 'Invalid credentials']);
     }
+
+    public function userlogin(Request $request)
+    {
+        $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        $credentials = $request->only('email', 'password');
+
+        // Use the 'users' guard and the 'User' model
+        if (Auth::guard('users')->attempt($credentials)) {
+            return redirect('/hello');
+        }
+
+        // Authentication failed
+        return back()->withErrors(['email' => 'Invalid credentials']);
+    }
+
+
 }

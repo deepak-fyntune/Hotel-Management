@@ -13,9 +13,14 @@ class HomeController extends Controller
 
     return view('admin/user-detail', ['users' => $users]);
 }
-public function view(){
-    $users = Users::all();
-    return view('admin/update-user', ['users'=> $users]);
+public function view($id){
+    $user = Users::find($id);
+
+    if (!$user) {
+        abort(404);
+    }
+
+    return view('admin/update-user', ['user' => $user]);
 }
 
 public function adminupdateuser(){

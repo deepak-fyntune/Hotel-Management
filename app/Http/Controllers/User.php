@@ -13,12 +13,11 @@ class User extends Controller
     {
         $post = new Users;
         $post->name = $request->nname;
-        $post->username = $request->uname;
         $post->email = $request->email;
         $post->password = $request->password;
 
         $post->save();
-        return redirect('/')->with('status', 'Registration Successfull');
+        return redirect('/login')->with('status', 'Registration Successfull');
     }
 
 

@@ -17,9 +17,9 @@
     </div>
     <ul class="nav navbar-nav">
       <li ><a href="#">Home</a></li>
-      <li><a href="#">FOOD PANEL</a></li>
+      <li><a href="food-panel">FOOD PANEL</a></li>
       <li><a href="#">ORDER</a></li>
-      <li class="active"><a href="/detail-check">USER PANEL</a></li>
+      <li class="active"><a href="/user-detail">USER PANEL</a></li>
 
     </ul>
   </div>
@@ -27,7 +27,12 @@
 
 <div class="container">
     <a href="admin-add-user" class="btn btn-primary">Add User</a>
-<br>
+<br><br>
+@if(session('status'))
+    <div class="alert alert-success" style="color: red">
+        {{ session('status') }}
+    </div>
+@endif
     <table class="table table-dark">
         <thead>
           <tr>
@@ -38,30 +43,31 @@
           </tr>
         </thead>
         <tbody>
+            @php $counter = 1 @endphp
             @foreach ($users as $user)
-          <tr>
-
-
-            <th scope="row">{{ $user->id }}</th>
-            <td>{{ $user->name }}</td>
-            <td>{{ $user->email }}</td>
-
-            <td>
-                <form action="{{ route('users-destroy', $user->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-                <form action="{{ route('users-update', $user->id) }}">
-                    @csrf
-                    @method('')
-                <input type="button" class="btn btn-success" value="Edit">
-
-            </form></td>
-
-          </tr>
-          @endforeach
-
+                <tr>
+                    <th scope="row">{{ $counter++ }}</th>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>
+                        <div class="row">
+                            <div class="col">
+                                <form action="{{ route('users-destroy', $user->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </div><br>
+                            <div class="col">
+                                <form action="{{ route('user-update', ['id' => $user->id]) }}" method="get">
+                                    @csrf
+                                    <button type="submit" class="btn btn-success">&nbsp;&nbsp;Edit&nbsp;&nbsp;</button>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
       </table>
 

@@ -24,15 +24,54 @@
     </ul>
   </div>
 </nav>
+<div class="container">
+    <a href="/food-create" class="btn btn-primary">Add New Food</a>
+<br><br>
 @if(session('status'))
     <div class="alert alert-success">
         {{ session('status') }}
     </div>
 @endif
-<div class="container">
-  <h3>HELLO!!! Admin</h3>
-  <p>Wecome to food ordering portal</p>
-</div>
+
+
+<table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Food Name</th>
+        <th scope="col">Food Price</th>
+        <th scope="col">Description</th>
+        <th scope="col">Image</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+
+
+        <th scope="row">Food Name</th>
+        <td>Food Price</td>
+        <td>Description</td>
+        <td>Image</td>
+
+
+
+        <td>
+            <form action="" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form><br>
+            <form action="" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-success">&nbsp;&nbsp;Edit&nbsp;&nbsp;</button>
+            </form>
+            </td>
+
+      </tr>
+
+    </tbody>
+  </table>
 
 </body>
 </html>
