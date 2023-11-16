@@ -5,6 +5,7 @@ use App\Http\Controllers\User;
 use App\Http\Controllers\Admin;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\FoodController;
 
 
 /*
@@ -76,7 +77,6 @@ Route::post('/userauth', [AuthController::class,'userlogin'])->name('userauth');
 
 
 //Food Routing
-use App\Http\Controllers\FoodController;
-Route::get('/food-create', [FoodController::class, 'create'])->name('food.create');
-Route::post('/food-store', [FoodController::class, 'store'])->name('food.store');
+Route::get('/food-create', [FoodController::class, 'create'])->name('food-create');
+Route::post('/food-store', [FoodController::class, 'store'])->name('food-store');
 
