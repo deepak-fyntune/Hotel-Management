@@ -21,7 +21,7 @@
                         <div class="card" style="border-radius: 15px;">
                             <div class="card-body p-3">
                                 <h2 class="text-uppercase text-center mb-3">Update Existing User</h2>
-                                <form method="GET" action="">
+                                <form method="GET" action="{{ route('user-update-process', [$user->id]) }}">
                                     @csrf
 
                                     <div class="form-outline mb-3">
@@ -38,17 +38,17 @@
                                         <label class="form-label" for="form3Example3cg">Your Email</label>
                                     </div>
 
-                                    <div class="form-outline mb-3">
+                                    {{-- <div class="form-outline mb-3">
                                         <input type="hidden" id="myInput"
                                             class="form-control form-control-lg" name="password"
                                             value="{{ $user->password }}" required />
-                                        {{-- <label class="form-label" for="form3Example4cg">Password</label> --}}
+                                        <label class="form-label" for="form3Example4cg">Password</label>
                                     </div>
 
                                     <div class="form-check mb-3">
                                         <input type="checkbox" class="form-check-input" id="showPassword" onclick="myFunction()">
                                         <label class="form-check-label" for="showPassword">Show Password</label>
-                                    </div>
+                                    </div> --}}
 
                                     <div id="passwordError" class="text-danger"></div>
 

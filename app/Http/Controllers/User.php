@@ -40,4 +40,23 @@ class User extends Controller
 
         return redirect('detail-check')->with('status', 'User deleted successfully');
     }
+
+
+    public function update(Request $request, $id)
+    {
+        $post = Users::find($id);
+
+        if (!$post) {
+            return redirect('detail-check')->with('error', 'User not found');
+        }
+
+        $post->name = $request->nname;
+        $post->email = $request->email;
+
+        // If you have other fields to update, add them here
+
+        $post->save();
+
+        return redirect('detail-check')->with('status', 'Update Successful');
+    }
 }

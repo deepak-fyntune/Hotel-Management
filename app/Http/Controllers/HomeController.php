@@ -23,8 +23,8 @@ public function view($id){
     return view('admin/update-user', ['user' => $user]);
 }
 
-public function adminupdateuser(){
-    $users = Users::all();
-    return view('admin/update-user', ['users'=> $users]);
-}
+// public function adminupdateuser(){
+//     $users = Users::all();
+//     return view('admin/update-user', ['users'=> $users]);
+// }
 }

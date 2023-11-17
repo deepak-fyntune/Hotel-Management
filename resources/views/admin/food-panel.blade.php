@@ -27,6 +27,13 @@
 <div class="container">
     <a href="/food-create" class="btn btn-primary">Add New Food</a>
 <br><br>
+@if (session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
+
+
 @if(session('status'))
     <div class="alert alert-success">
         {{ session('status') }}
@@ -34,36 +41,49 @@
 @endif
 
 
+@if($foods->isEmpty())
+<p>No food items found.</p>
+@else
+
+    {{-- <div>
+        <img src="{{ asset('images/' . $food->image) }}" alt="{{ $food->food_name }}">
+        <h2>{{ $food->food_name }}</h2>
+        <p>{{ $food->description }}</p>
+        <p>Price: ${{ $food->price }}</p>
+    </div> --}}
+
+
 <table class="table table-dark">
     <thead>
       <tr>
         <th scope="col">Food Name</th>
-        <th scope="col">Food Price</th>
+        <th scope="col">Food&nbsp;Price</th>
         <th scope="col">Description</th>
         <th scope="col">Image</th>
       </tr>
     </thead>
-    <tbody>
+    @foreach ($foods as $food)
 
+    <tbody>
       <tr>
 
 
-        <th scope="row">Food Name</th>
-        <td>Food Price</td>
-        <td>Description</td>
-        <td>Image</td>
+        <td scope="row">{{ $food->foodname }}</td>
+        <td>{{ $food->price }}</td>
+        <td>{{ $food->description }}</td>
+        <td><img src="{{ asset('images/' . $food->image) }}" alt="{{ $food->foodname }}" class="img-thumbnail" width="100" height="100"></td>
 
 
 
         <td>
-            <form action="" method="POST">
+            <form action="{{ route('food.destroy', $food->id) }}" method="post">
                 @csrf
-                @method('DELETE')
+                @method('delete')
                 <button type="submit" class="btn btn-danger">Delete</button>
             </form><br>
             <form action="" method="POST">
                 @csrf
-                @method('DELETE')
+                @method('')
                 <button type="submit" class="btn btn-success">&nbsp;&nbsp;Edit&nbsp;&nbsp;</button>
             </form>
             </td>
@@ -71,7 +91,10 @@
       </tr>
 
     </tbody>
+    @endforeach
+    @endif
   </table>
+
 
 </body>
 </html>

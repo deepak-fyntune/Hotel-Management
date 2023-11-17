@@ -70,8 +70,10 @@
                 <div class="card mt-2 mx-auto p-4 bg-light">
                     <div class="card-body bg-light">
 
+
                         <div class = "container">
-                            <form id="contact-form" role="form" method="POST" action="{{ route('food-store') }}">
+                            <form id="contact-form" role="form" method="POST" action="{{ route('food-store') }}"
+                                enctype="multipart/form-data">
                                 @csrf
 
 
@@ -81,8 +83,8 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="form_name">Food Name *</label>
-                                                <input id="form_name" type="text" name="name" class="form-control"
-                                                    placeholder="Food Name" required="required"
+                                                <input id="form_name" type="text" name="foodname"
+                                                    class="form-control" placeholder="Food Name" required="required"
                                                     data-error="Firstname is required.">
 
                                             </div>
@@ -90,7 +92,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="form_lastname">Price *</label>
-                                                <input id="form_lastname" type="number" name="surname"
+                                                <input id="form_lastname" type="number" name="price"
                                                     class="form-control" placeholder="Add Food Price ₹ (only number)"
                                                     required="required">
                                             </div>
@@ -101,7 +103,7 @@
                                             <div class="form-group">
                                                 <label for="form_email">Image </label>
                                                 <input id="form_email" type="file" name="image"
-                                                    class="form-control" required="required">
+                                                    class="form-control" required="required" accept="image/x-png,image/gif,image/jpeg">
 
                                             </div>
 
@@ -110,8 +112,8 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="form_message">Description *</label>
-                                                    <textarea id="form_message" name="message" class="form-control" placeholder="Add Description" rows="4"
-                                                        required="required" data-error="Add decription"></textarea>
+                                                    <textarea id="form_message" class="form-control" placeholder="Add Description" rows="4" required="required"
+                                                        data-error="Add decription" name="description"></textarea>
                                                 </div>
 
                                             </div>

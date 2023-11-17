@@ -14,26 +14,52 @@ class FoodController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'foodname' => 'required|string',
-            'description' => 'required|string',
-            'price' => 'required|numeric',
-        ]);
+
+        // dd($request->all());
+
+
+        // $request->validate([
+        //     'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        //     'foodname' => 'required|string',
+        //     'description' => 'required|string',
+        //     'price' => 'required|numeric',
+        // ]);
 
         $image = $request->file('image');
         $imageName = time().'.'.$image->extension();
         $image->move(public_path('images'), $imageName);
 
         $food = new Food([
-            'image_name' => $imageName,
-            'food_name' => $request->get('food_name'),
-            'description' => $request->get('description'),
-            'price' => $request->get('price'),
+            'image' => $imageName,
+            'foodname' => $request->input('foodname'),
+            'description' => $request->input('description'),
+            'price' => $request->input('price'),
         ]);
 
         $food->save();
 
-        return redirect()->route('food.create')->with('success', 'Food item added successfully!');
+        return redirect()->route('food-view')->with('success', 'Food item added successfully!');
+
     }
+
+
+
+
+public function index()
+{
+    $foods = Food::all();
+    // dd($foods);
+
+    return view('admin/food-panel', compact('foods'));
+}
+public function destroy($id)
+{
+    $food = Food::find($id);
+
+
+
+    $food->delete();
+
+    return redirect()->route('food-view')->with('success', 'Food item deleted successfully.');
+}
 }
