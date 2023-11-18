@@ -81,7 +81,7 @@
                 @method('delete')
                 <button type="submit" class="btn btn-danger">Delete</button>
             </form><br>
-            <form action="" method="POST">
+            <form action="" method="">
                 @csrf
                 @method('')
                 <button type="submit" class="btn btn-success">&nbsp;&nbsp;Edit&nbsp;&nbsp;</button>

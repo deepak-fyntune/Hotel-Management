@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\NewApi;
 use App\Models\Food;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User;
@@ -9,6 +10,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\AnotherApiController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -89,6 +91,8 @@ Route::post('/food-store', [FoodController::class, 'store'])->name('food-store')
 // Route::get('/food-view', [FoodController::class, 'view'])->name('food-view');
 Route::delete('/food-destroy/{id}', [FoodController::class, 'destroy'])->name('food.destroy');
 
+
+
+
+//API Routing
 Route::get('apiexample', [AnotherApiController::class,'index'])->name('apiexample');
-
-
